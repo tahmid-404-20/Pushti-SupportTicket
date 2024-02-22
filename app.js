@@ -6,9 +6,12 @@ const axios = require("axios");
 const PORT = process.env.port;
 const supabase = require("./db.js");
 
+// hfor admin
 const historyRoute = require("./historyRoute.js");
-const sendTicketRoute = require("./sendTicketRoute.js");
 const updateTicketCondition = require("./updateTicketCondition.js");
+// for vendor, farmer, sme and agent
+const sendTicketRoute = require("./sendTicketRoute.js");
+const checkInboxRoute = require("./checkInboxRoute.js");
 
 app.use(express.json());
 app.use(cors({ origin: "*" }));
@@ -17,7 +20,7 @@ app.use(cors({ origin: "*" }));
 app.use("/get-tickets", historyRoute);
 app.use("/send-ticket", sendTicketRoute);
 app.use("/update-ticket", updateTicketCondition);
-
+app.use("/inbox", checkInboxRoute);
 
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);
