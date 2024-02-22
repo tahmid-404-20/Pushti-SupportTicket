@@ -7,10 +7,17 @@ const PORT = process.env.port;
 const supabase = require("./db.js");
 
 const historyRoute = require("./historyRoute.js");
+const sendTicketRoute = require("./sendTicketRoute.js");
+const updateTicketCondition = require("./updateTicketCondition.js");
 
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+
+
 app.use("/get-tickets", historyRoute);
+app.use("/send-ticket", sendTicketRoute);
+app.use("/update-ticket", updateTicketCondition);
+
 
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);

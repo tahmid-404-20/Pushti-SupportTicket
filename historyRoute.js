@@ -197,7 +197,7 @@ router.get("/agent", async (req, res) => {
              from
                "SupportTicket"
              where
-               "userType" = 'farmer'
+               "userType" = 'agent'
            ) as A
            join (
              select
