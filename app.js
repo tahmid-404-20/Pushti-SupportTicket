@@ -18,8 +18,10 @@ app.use(cors({ origin: "*" }));
 
 
 app.use("/get-tickets", historyRoute);
-app.use("/send-ticket", sendTicketRoute);
 app.use("/update-ticket", updateTicketCondition);
+
+// caution - use appropiate userType with id
+app.use("/send-ticket", sendTicketRoute);
 app.use("/inbox", checkInboxRoute);
 
 app.listen(PORT, async () => {
@@ -39,11 +41,6 @@ app.listen(PORT, async () => {
     process.exit(1);
   }
 });
-
-// admin uses this url to get all the support tickets sent by users, but he gets these in three lists vendor, farmer, sme and agent
-
-
-
 
 const deregisterService = async () => {
   try {
