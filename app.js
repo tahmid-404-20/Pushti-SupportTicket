@@ -6,8 +6,11 @@ const axios = require("axios");
 const PORT = process.env.port;
 const supabase = require("./db.js");
 
+const historyRoute = require("./historyRoute.js");
+
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+app.use("/get-tickets", historyRoute);
 
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);
@@ -26,6 +29,9 @@ app.listen(PORT, async () => {
     process.exit(1);
   }
 });
+
+// admin uses this url to get all the support tickets sent by users, but he gets these in three lists vendor, farmer, sme and agent
+
 
 
 
