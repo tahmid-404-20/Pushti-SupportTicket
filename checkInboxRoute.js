@@ -5,7 +5,7 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
   try {
     let response = await supabase.any(
-      `select "subject", "details", "time", "status"
+      `select "id","subject", "details", "time", "status"
         from "SupportTicket"
         where "userId" = $1
         order by "time" desc;`,
