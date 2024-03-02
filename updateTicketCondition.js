@@ -4,10 +4,10 @@ const router = require("express").Router();
 // make-read is used to close the ticket
 router.post("/make-read", async (req, res) => {
   try {
-    let { ticketId, comment } = req.body;
+    let { ticketId } = req.body;
     let response = await supabase.one(
-      `update "SupportTicket" set "readStatus" = True, "adminComment" = $1 where "id" = $2 returning *;`,
-      [comment, ticketId]
+      `update "SupportTicket" set "readStatus" = True where "id" = $1 returning *;`,
+      [ticketId]
     );
     res.status(200).json(response);
   } catch (error) {
@@ -17,10 +17,10 @@ router.post("/make-read", async (req, res) => {
 
 router.post("/update-status", async (req, res) => {
   try {
-    let { ticketId, status } = req.body;
+    let { ticketId, status, comment } = req.body;
     let response = await supabase.one(
-      `update "SupportTicket" set "status" = $1 where "id" = $2 returning *;`,
-      [status, ticketId]
+      `update "SupportTicket" set "status" = $1, "adminComment" = $2 where "id" = $3 returning *;`,
+      [status, comment, ticketId]
     );
     res.status(200).json(response);
   } catch (error) {
