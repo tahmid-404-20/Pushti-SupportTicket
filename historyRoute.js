@@ -4,7 +4,7 @@ const router = require("express").Router();
 router.get("/farmer", async (req, res) => {
   try {
     let response = await supabase.any(`select
-      "ticketId", "subject", "details", "time", "status", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
+      "ticketId", "subject", "details", "time", "status", "adminComment", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
      from
        ((
          (
@@ -13,7 +13,7 @@ router.get("/farmer", async (req, res) => {
              "subject",
              "details",
              "time",
-             "status",
+             "status", "adminComment",
              "readStatus",
              "userId"
            from
@@ -64,7 +64,7 @@ router.get("/farmer", async (req, res) => {
 router.get("/vendor", async (req, res) => {
   try {
     let response = await supabase.any(`select
-        "ticketId", "subject", "details", "time", "status", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
+        "ticketId", "subject", "details", "time", "status", "adminComment", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
        from
          ((
            (
@@ -73,7 +73,7 @@ router.get("/vendor", async (req, res) => {
                "subject",
                "details",
                "time",
-               "status",
+               "status", "adminComment",
                "readStatus",
                "userId"
              from
@@ -123,7 +123,7 @@ router.get("/vendor", async (req, res) => {
 router.get("/sme", async (req, res) => {
   try {
     let response = await supabase.any(`select
-        "ticketId", "subject", "details", "time", "status", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
+        "ticketId", "subject", "details", "time", "status", "adminComment", "readStatus", "userId", "userType", "name", "avatarLink", "rank", "points", "UnionParishad", "Upazilla", "District", "Division"
        from
          ((
            (
@@ -132,7 +132,7 @@ router.get("/sme", async (req, res) => {
                "subject",
                "details",
                "time",
-               "status",
+               "status", "adminComment",
                "readStatus",
                "userId"
              from
@@ -182,7 +182,7 @@ router.get("/sme", async (req, res) => {
 router.get("/agent", async (req, res) => {
   try {
     let response = await supabase.any(`select
-        "ticketId", "subject", "details", "time", "status", "readStatus", "userId", "userType", "name", "avatarLink", "UnionParishad", "Upazilla", "District", "Division"
+        "ticketId", "subject", "details", "time", "status", "adminComment", "readStatus", "userId", "userType", "name", "avatarLink", "UnionParishad", "Upazilla", "District", "Division"
        from
          (
            (
@@ -191,7 +191,7 @@ router.get("/agent", async (req, res) => {
                "subject",
                "details",
                "time",
-               "status",
+               "status", "adminComment",
                "readStatus",
                "userId"
              from
